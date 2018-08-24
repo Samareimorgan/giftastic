@@ -1,0 +1,14 @@
+body {
+    font-size: 16px;
+    font-family: Arial, Helvetica, sans-serif;
+    background-image: URL("../images/kermit-bgi.png");
+    background-size: 50%;
+    background-position: auto;
+    background-repeat: no-repeat;
+
+}
+
+h2 {
+    font-family: 'East Sea Dokdo', cursive;
+    font-size: 50px; 
+}
