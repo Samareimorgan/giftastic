@@ -4,33 +4,64 @@ $(document).ready(function () {
 
   function getGiphy() {
 
-    var muppet = $(this).attr("data-name");
-    var queryURL = "https://api.giphy.com/v1/gifs/search?api_key=umpnfYGGEaxrvpVX15blgnTvZzKpDwyL&q=" + muppet + "&limit=10&offset=0&rating=PG-13&lang=en"
+    var muppet = $("#muppet-input");
+    var queryURL ="https://api.giphy.com/v1/gifs/search?api_key=umpnfYGGEaxrvpVX15blgnTvZzKpDwyL&q=" + muppet + "&limit=10&offset=0&rating=G&lang=en";
 
-    // Creating an AJAX call for the specific movie button being clicked
+    // AJAX call 
     $.ajax({
       url: queryURL,
       method: "GET"
-    }).then(function(response) {
-      console.log(response)
+    })
+      .then(function(response) {
+        var results = response.data;
 
-      // Creating a div to hold the movie
-      var muppetDiv = $("<div class='muppet'>");
+        for (var j = 0; j < results.length; j++) {
+          var gifDiv = $("<div class'item'>");
+          
+          var rating = results[j].rating;
 
+          var p = $("<p>").text("Rated: " + rating);
+
+          var muppetImage = $("<img>");
+          muppetImage.attr("src", results[j].images.fixed_width.url);
+
+          gifDiv.prepend(p);
+          gifDiv.prepend(muppetImage);
+
+          $("#muppets-view").prepend(gifDiv);
+        }
+      })
+    }
+
+      /*  // Creating a variable to hold the gif img URL
+        var imageUrl = response.data.image_original_url;
+        //Create a varible to create an img tag to hold the image
+        var muppetImage = $("<img>");
+
+        //Add attributes of src and alt to the image
+          muppetImage.attr("src", imageUrl);
+          muppetImage.attr("alt", muppet);
+
+        //prepend images to muppets-view
+        $("#muppets-view").prepend(muppetImage);
+      }); */
+  
       // Storing the rating data
-      var rating = response.Rated;
+     // var gifRating = response.data_rating;
+
+      //  console.log(gifRating);
 
       // Creating an element to have the rating displayed
-      var pOne = $("<p>").text("Rating: " + rating);
+     // var pOne = $("<p>").text("Rating: " + gifRating);f
 
       // Displaying the rating
-      muppetDiv.append(pOne);
+     // muppetDiv.append(pOne);
 
       // Prepend Gifs to others
-      $("#muppets-view").prepend(muppetDiv);
-    });
+    //  $("#muppets-view").prepend(muppetDiv);
 
-  }
+
+  
 
   //functions and Events
   function createBtn() {
@@ -50,11 +81,14 @@ $(document).ready(function () {
 
   $("#add-muppet").on("click", function(event) {
     event.preventDefault();
-    var muppet = $("#muppet-input").val().trim();
-    topics.push(muppet);
+    var muppetInput = $("#muppet-input").val().trim();
+    topics.push(muppetInput);
     createBtn();
     });
-  createBtn();
+  
+
+  $(document).on("click", createBtn());
+  $(document).on("click", ".muppet-btn", getGiphy());
 })
 
    /* var queryURL = "https://api.giphy.com/v1/gifs/search?api_key=umpnfYGGEaxrvpVX15blgnTvZzKpDwyL&q=muppets&limit=10&offset=0&rating=PG-13&lang=en";
