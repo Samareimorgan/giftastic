@@ -10,5 +10,11 @@ body {
 
 h2 {
     font-family: 'East Sea Dokdo', cursive;
-    font-size: 50px; 
+    font-size: 85px; 
+}
+
+img {
+    width: 300px;
+    height: 250px;
+    position; fixed;
 }
