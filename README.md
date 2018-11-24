@@ -10,6 +10,8 @@ The muppets take over the web application utilizes the Giphy API to request Mupp
 
 The user can request muppet giphys by pressing the buttons already provided. The user can also create a new muppet button by entering a muppet name in the search input, and press search.  At this point a button is dynamically created and added to the end of the current list of buttons.  When the user clicks on the new button,  it will complete an AJAX get call, like the other buttons.  
 
+## Technology 
+This web application used Javascript, Jquery, AJAX, HTML5, CSS3 & Bootstrap.
 ## Credits
 Created by Samantha "Samarei Morgan" Johnston
 ## Licenced 
