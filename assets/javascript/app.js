@@ -1,6 +1,6 @@
 $(document).ready(function () {
   //global variables --------
-  var topics = ["Dr. Bensen Honeydew", "Rizzo the Rat", "Scooter", "Statler and Waldorf", "Sweetums", "Lew Zealand", "Cookie Monster"];
+  var topics = ["Kermit the Frong", "Rizzo the Rat", "Scooter the Muppet", "Statler and Waldorf", "Sweetums the Muppet", "Lew Zealand the Muppet", "Cookie Monster"];
   //Click Events
   $(document).on("click", createBtn());
   $(document).on("click", ".muppet-btn", function(event) {
@@ -42,11 +42,11 @@ $(document).ready(function () {
           muppetImage.addClass("gif");
           muppetImage.attr("alt", muppet);
           //append the text and the image to the div created. 
-          gifDiv.append(p);
-          gifDiv.append(muppetImage);
+          gifDiv.prepend(p);
+          gifDiv.prepend(muppetImage);
 
           //append the div to the muppets-view id
-          $("#muppets-view").append(gifDiv);
+          $("#muppets-view").prepend(gifDiv);
         }
       })
   }
